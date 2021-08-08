@@ -2,3 +2,4 @@ functions
 
 # Local Netlify folder
 .netlify
+node_modules
