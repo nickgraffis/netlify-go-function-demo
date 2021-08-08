@@ -3,6 +3,10 @@
   functions = "functions"
   publish = "public"
 
+[dev]
+  command = "npm run dev"
+  port = 8889
+
 [build.environment]
   GO_IMPORT_PATH = "github.com/nickgraffis/netlify-go-function-demo"
   GO111MODULE = "on"

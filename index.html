@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  </head>
+  <body v-scope v-effect="oninit()" class="dark:bg-gray-800">
+    <script type="module">
+      import 'virtual:windi.css'
+      import { createApp } from 'https://unpkg.com/petite-vue?module'
+
+      /**
+       * Create the vue app
+       * Set up variables that will be used
+       * Set up methods that can be used
+       */
+      createApp({
+        feed: [],
+
+        //Fetch vin data
+        fetchData(){
+          fetch(`/api/feed`)
+            .then((res) => res.json()).catch((err) => console.log(err))
+            .then((data) => {
+              this.feed = data
+              console.log(data)
+          }).catch(err => console.log(err))
+        },
+
+        //Check for user color preference
+        checkColorScheme() {
+          const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+          const setting = localStorage.getItem('color-schema') || 'auto'
+          if (setting === 'dark' || (prefersDark && setting !== 'light'))
+            document.documentElement.classList.toggle('dark', true)
+        },
+
+        //Run this method first
+        oninit() {
+          this.checkColorScheme()
+          this.fetchData()
+        }
+      }).mount()
+    </script>
+    <p>{{JSON.stringify(feed)}}</p>
+  </body>
+</html>

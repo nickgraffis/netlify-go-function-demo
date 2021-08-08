@@ -1,0 +1,20 @@
+{
+  "name": "petite-vin",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "concurrently -n \"⚡️vite, 🦫go\" -c \"yellow,cyan\" \"vite --clearScreen false\" \"cd cmd/gateway && go run main.go\"",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "airtable": "^0.11.1",
+    "concurrently": "^6.2.1",
+    "vue": "^3.0.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^1.2.4",
+    "@vue/compiler-sfc": "^3.0.5",
+    "vite": "^2.4.0",
+    "vite-plugin-windicss": "^1.2.4"
+  }
+}
