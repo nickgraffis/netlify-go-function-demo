@@ -2,7 +2,7 @@
   "name": "petite-vin",
   "version": "0.0.0",
   "scripts": {
-    "dev": "concurrently -n \"⚡️vite, 🦫go\" -c \"yellow,cyan\" \"vite --clearScreen false\" \"go run main.go --port 8888\"",
+    "dev": "concurrently -n \"⚡️vite, 🦫go\" -c \"yellow,cyan\" \"vite --clearScreen false\" \"cd cmd/gateway && go run main.go --port 8888\"",
     "build": "vite build",
     "serve": "vite preview"
   },
